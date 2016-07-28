@@ -4836,6 +4836,14 @@ namespace ts {
                                 displayParts.push(operatorPart(SyntaxKind.EqualsToken));
                                 displayParts.push(spacePart());
                                 addFullSymbolName(internalAliasSymbol, enclosingDeclaration);
+
+                                addNewLineIfDisplayPartsExist(); 
+                                var fileName1 = importEqualsDeclaration.moduleReference.getSourceFile();
+                                var fileName2 = sourceFile.getFullText();
+                                let result = getSymbolDisplayPartsDocumentationAndSymbolKind(internalAliasSymbol, importEqualsDeclaration.moduleReference.getSourceFile(), getContainerNode(importEqualsDeclaration.moduleReference), importEqualsDeclaration.moduleReference);
+                                for (let part of result.displayParts) {
+                                    displayParts.push(part);
+                                }
                             }
                         }
                         return true;

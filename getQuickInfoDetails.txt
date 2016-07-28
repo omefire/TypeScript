@@ -1,0 +1,72 @@
+
+* To run the single test that exercises getQuickInfoAtPosition()::
+    jake runtests-browser browser=chrome t=addInterfaceMemberAboveClass
+
+* How does getQuickInfoAtPosition(fileName, position) work ?
+    - Synchronize Data
+        - Refresh the cache data associated with the fileName
+        - ...
+    - Get the sourcefileObject associated with the fileName
+    - Get the node/token whose text encompasses the position we care about
+    - Get the typechecker associated to this program
+    - Get the symbol associated to the location
+    - getSymbolDisplayPartsDocumentationAndSymbolKind(symbol, sourceFile, enclosingDeclaration, )
+        - get the semantic meaning from location (type? value? both?, etc...)
+        - 
+* Why is it that in the example namespaceA+interfaceA, namespace hover only shows 'namespace A' while interface hover
+    shows 'namespace A \r\n interface A' ?
+* 
+
+test cases:
+    - Daniel's example of import-reexports: A.ts -> B.ts -> C.ts
+    - What if not ImportDeclaration
+    - Come up with further test cases: see grammar & references
+    - What if external module declaration ?
+    - What if multiple declarations ?
+    - What if multiple declarations of different kinds ?
+    - import x = Namespace
+    - import x = Namespace.IdReference
+    - What is symbol.declarations for ?
+    - Other import kinds: import = require, etc....
+    - import x = require(...) ?
+    - What of a symbol with multiple declarations ?
+    - import x = X.Y.Z;
+    - With namespace defined in a different file
+    - example from techird
+
+
+
+    Refactor / Add member declarations
+    Turn an ES2015 class into a TypeScript class by adding member declarations from analyzing this.xx =  assignments in members
+    
+    JSDoc: we can grab type info that way
+    Webstorm
+    JSDoc scaffolding
+    Refactor Dog -> Dog2
+    XML Docs (from old JSLS to new TSLS ?) : Nikhil + Bowden
+    intellisense without needing a .d.ts, just going off of jsdoc
+    @typedef
+    ToDO ASAP: put brackets in jsdoc scaffolding
+    Make jsdoc type name errors be highlighted
+    Turn's type inference
+
+    test.js file:
+    class Dog {}
+
+    /**
+    *
+    * @param {Dog} a
+    * @param {} b
+    */
+    function(a, b) {
+
+    }
+
+    /** 
+    * @class
+    */
+    function Foo() { }
+
+
+    Hired:
+    Mention what I wanna work on next: small companies, less bureaucracy, more impact, 

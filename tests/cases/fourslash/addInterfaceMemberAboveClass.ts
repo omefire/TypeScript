@@ -1,21 +1,25 @@
 /// <reference path="fourslash.ts" />
 
-//// 
-//// interface Intersection {
-////     /*insertHere*/
-//// }
-//// interface Scene { }
-//// class /*className*/Sphere {
-////     constructor() {
-////     }
-//// }
+//// //@fileName: file1.ts
+//// namespace A { export var y; }
+//// class A { }
 
-goTo.marker('className');
+//// //@fileName: file2.ts
+//// interface A { x: string }
+//// import /*y*/y = /*cc*/A from "./file1";
+//// 
+
+
+
+goTo.marker('y');
 verify.quickInfoIs('class Sphere');
 
-goTo.marker('insertHere');
+goTo.marker('Muto');
+verify.quickInfoIs('class Sphere');
+
+/*goTo.marker('insertHere');
 edit.insert("ray: Ray;");
 
 goTo.marker('className');
 
-verify.quickInfoIs('class Sphere');
+verify.quickInfoIs('class Sphere');*/
